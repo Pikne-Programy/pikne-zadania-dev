@@ -12,7 +12,7 @@ on:
 
 jobs:
   frontend:
-    name: Frontend build & push
+    name: Frontend - build & push
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -42,11 +42,13 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   backend:
-    name: Frontend build & push
+    name: Backend - build & push
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
 
       - name: Get metadata
         uses: docker/metadata-action@v3
